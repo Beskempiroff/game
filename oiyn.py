@@ -66,6 +66,7 @@ yellowghostcut_image_rect.center = ((WINDOW_WIDTH+BUFFER_DISTANCE), random.randi
 
 
 # fonts and texts
+
 main_font = pygame.font.Font('AttackGraffiti.ttf', 32)
 
 score_text = main_font.render("BALL: " + str(player_score), True, RED)
