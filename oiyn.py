@@ -58,7 +58,10 @@ ghostpck_image_rect.center = ((WINDOW_WIDTH+BUFFER_DISTANCE), random.randint(HEA
 
 
 
-
+yellowghostcut_image = pygame.image.load('bbom.png').convert_alpha()
+yellowghostcut_image = pygame.transform.scale(yellowghostcut_image, (40, 60)) 
+yellowghostcut_image_rect = yellowghostcut_image.get_rect()
+yellowghostcut_image_rect.center = ((WINDOW_WIDTH+BUFFER_DISTANCE), random.randint(HEADER_HEIGHT+25, WINDOW_HEIGHT-25))
 
 
 
@@ -110,7 +113,7 @@ while running:
         cut_rect.y += ghostpck_velocity
 
     ghostpck_image_rect.centerx -= ghostpck_velocity
-
+    yellowghostcut_image_rect.centerx -= yellowghostcut_velocity
 
 
     if ghostpck_image_rect.centerx < 0:
@@ -118,6 +121,10 @@ while running:
         player_live -= 1
         sound2.play()
 
+    if yellowghostcut_image_rect.centerx < 0:
+        yellowghostcut_image_rect.center = ((WINDOW_WIDTH+BUFFER_DISTANCE), random.randint(HEADER_HEIGHT+25, WINDOW_HEIGHT-25))
+        player_live -= 0
+        sound2.play()
 
 
 
@@ -129,7 +136,12 @@ while running:
         ghostpck_velocity += acceleration
 
     
-
+    if cut_rect.colliderect(yellowghostcut_image_rect):
+        player_score -= 2
+        player_live -= 5
+        sound1.play()
+        yellowghostcut_image_rect.center = ((WINDOW_WIDTH-BUFFER_DISTANCE), random.randint(HEADER_HEIGHT+25, WINDOW_HEIGHT-25))
+        yellowghostcut_velocity += acceleration
 
         
     if player_live == 0 or player_score >15:
@@ -162,6 +174,7 @@ while running:
     pygame.draw.line(display_surface, WHITE, (0, HEADER_HEIGHT), (WINDOW_WIDTH, HEADER_HEIGHT), 5)
     display_surface.blit(cut_image, cut_rect)
     display_surface.blit(ghostpck_image, ghostpck_image_rect)
+    display_surface.blit(yellowghostcut_image, yellowghostcut_image_rect)
     
     score_text = main_font.render("OCHKO: " + str(player_score), True, RED)
     live_text = main_font.render("ZHANY: " + str(player_live), True, RED)
