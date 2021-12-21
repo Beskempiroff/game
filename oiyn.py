@@ -88,7 +88,7 @@ game_continue_text = main_font.render("QAITADAN", True, GREEN)
 game_continue_rect = game_continue_text.get_rect()
 game_continue_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2+100)
 
-# sounds and musics
+ # sounds and musics
 pygame.mixer.music.load('music.wav')
 sound1 = pygame.mixer.Sound('sound_1.wav')
 sound2 = pygame.mixer.Sound('sound_2.wav')
