@@ -31,6 +31,10 @@ background = pygame.image.load('fon.jpeg')
 
 
 
+cut_image = pygame.image.load('glv.PNG').convert_alpha()
+cut_image = pygame.transform.scale(cut_image, (50, 80))  
+cut_rect = cut_image.get_rect()
+cut_rect.center = (80, WINDOW_HEIGHT//2)
 
 
 
@@ -90,6 +94,7 @@ while running:
 
     display_surface.blit(background, (0,0))
     pygame.draw.line(display_surface, WHITE, (0, HEADER_HEIGHT), (WINDOW_WIDTH, HEADER_HEIGHT), 5)
+    display_surface.blit(cut_image, cut_rect)
 
     
 
