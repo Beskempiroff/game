@@ -36,7 +36,6 @@ pygame.display.set_caption("CuT")
 background = pygame.image.load('fon.jpeg')
 
 
-
 score_backround = pygame.image.load('score_background.png').convert_alpha()
 score_background_rect = score_backround.get_rect()
 score_background_rect.topleft = (10,10)
@@ -56,13 +55,10 @@ ghostpck_image_rect = ghostpck_image.get_rect()
 ghostpck_image_rect.center = ((WINDOW_WIDTH+BUFFER_DISTANCE), random.randint(HEADER_HEIGHT+25, WINDOW_HEIGHT-25))
 
 
-
-
 yellowghostcut_image = pygame.image.load('bbom.png').convert_alpha()
 yellowghostcut_image = pygame.transform.scale(yellowghostcut_image, (40, 60)) 
 yellowghostcut_image_rect = yellowghostcut_image.get_rect()
 yellowghostcut_image_rect.center = ((WINDOW_WIDTH+BUFFER_DISTANCE), random.randint(HEADER_HEIGHT+25, WINDOW_HEIGHT-25))
-
 
 
 # fonts and texts
@@ -126,8 +122,6 @@ while running:
         yellowghostcut_image_rect.center = ((WINDOW_WIDTH+BUFFER_DISTANCE), random.randint(HEADER_HEIGHT+25, WINDOW_HEIGHT-25))
         player_live -= 0
         sound2.play()
-
-
 
 
     if cut_rect.colliderect(ghostpck_image_rect):
